@@ -15,7 +15,7 @@ const App = () => {
 
   const getBooks = async () => {
     const response = await fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${API_KEY}`
+      `https://www.googleapis.com/books/v1/volumes?q=${query}`
     );
     const data = await response.json();
     setBooks(data.items);
