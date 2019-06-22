@@ -1,11 +1,17 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import App, { getBooks } from "./App";
+import { shallow } from "enzyme";
 
-// it("renders without crashing", () => {
-//   const div = document.createElement("div");
-//   ReactDOM.render(<App />, div);
-//   ReactDOM.unmountComponentAtNode(div);
+it("renders without crashing", () => {
+  shallow(<App />);
+});
+
+// it("when search button is clicked", () => {
+//   const wrapper = shallow(<App />);
+
+//   const button = wrapper.find(".search-button");
+//   button.simulate("click");
+//   console.log(wrapper.props());
 // });
 
 describe("api call", () => {
