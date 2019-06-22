@@ -1,5 +1,5 @@
 import React from "react";
-import App, { getBooks } from "./App";
+import App, { getBooks } from "../App";
 import { shallow } from "enzyme";
 
 it("renders without crashing", () => {

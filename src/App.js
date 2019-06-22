@@ -15,7 +15,7 @@ export const getBooks = async query => {
 const App = () => {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("Harry Potter");
+  const [query, setQuery] = useState("Light");
 
   useEffect(() => {
     async function fetchBooks() {
