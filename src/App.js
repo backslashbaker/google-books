@@ -4,31 +4,26 @@ import "./App.css";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-export const getBooks = async (query) => {
+export const getBooks = async query => {
   const response = await fetch(
     `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${API_KEY}`
   );
   const data = await response.json();
-  console.log(data)
   return data;
 };
 
 const App = () => {
-  
-  console.log('api', API_KEY)
-
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("Harry Potter");
 
-  
-
   useEffect(() => {
-    const data = getBooks(query);
-    setBooks(data.items)
+    async function fetchBooks() {
+      const data = await getBooks(query);
+      setBooks(data.items);
+    }
+    fetchBooks();
   }, [query]);
-
- 
 
   const updateSearch = e => {
     setSearch(e.target.value);
