@@ -2,24 +2,33 @@ import React, { useEffect, useState } from "react";
 import Book from "./Book";
 import "./App.css";
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
+export const getBooks = async (query) => {
+  const response = await fetch(
+    `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${API_KEY}`
+  );
+  const data = await response.json();
+  console.log(data)
+  return data;
+};
+
 const App = () => {
-  const API_KEY = process.env.REACT_APP_API_KEY;
+  
+  console.log('api', API_KEY)
 
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("Harry Potter");
 
+  
+
   useEffect(() => {
-    getBooks();
+    const data = getBooks(query);
+    setBooks(data.items)
   }, [query]);
 
-  const getBooks = async () => {
-    const response = await fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${API_KEY}`
-    );
-    const data = await response.json();
-    setBooks(data.items);
-  };
+ 
 
   const updateSearch = e => {
     setSearch(e.target.value);
