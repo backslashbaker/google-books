@@ -7,7 +7,10 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 export const getBooks = async query => {
   const response = await fetch(
     `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${API_KEY}`
-  );
+  ).catch(error => {
+    console.log(error);
+    return;
+  });
   const data = await response.json();
   return data;
 };
@@ -56,7 +59,10 @@ const App = () => {
               title={book.volumeInfo.title}
               authors={book.volumeInfo.authors}
               publisher={book.volumeInfo.publisher}
-              image={book.volumeInfo.imageLinks.thumbnail}
+              image={
+                book.volumeInfo.imageLinks &&
+                book.volumeInfo.imageLinks.thumbnail
+              }
               info={book.volumeInfo.infoLink}
             />
           ))}
