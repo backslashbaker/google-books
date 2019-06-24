@@ -5,15 +5,25 @@ import { shallow } from "enzyme";
 
 const data = {
   title: "Harry Potter",
-  authors: ["GB", "DB"],
+  authors: ["DC", "DB"],
   publisher: "Drizzle",
-  infoLink: "http://openweathermap.org/img/w/09d.png",
-  image: "http://openweathermap.org/img/w/09d.png"
+  infoLink: "#",
+  image: "#"
 };
 
 it("renders without crashing", () => {
   const wrapper = shallow(<Book />);
   expect(wrapper).toHaveLength(1);
+});
+
+it("displays the author", () => {
+  const wrapper = shallow(<Book title={data.title} />);
+  expect(wrapper.find("author").text()).toContain("DB");
+});
+
+it("displays the publisher", () => {
+  const wrapper = shallow(<Book title={data.title} />);
+  expect(wrapper.find("publisher").text()).toContain("Drizzle");
 });
 
 it("displays the title", () => {

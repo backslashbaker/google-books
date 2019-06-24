@@ -49,16 +49,17 @@ const App = () => {
         </button>
       </form>
       <div className="books">
-        {books.map(book => (
-          <Book
-            key={book.id}
-            title={book.volumeInfo.title}
-            authors={book.volumeInfo.authors}
-            publisher={book.volumeInfo.publisher}
-            image={book.volumeInfo.imageLinks.thumbnail}
-            info={book.volumeInfo.infoLink}
-          />
-        ))}
+        {books &&
+          books.map(book => (
+            <Book
+              key={book.id}
+              title={book.volumeInfo.title}
+              authors={book.volumeInfo.authors}
+              publisher={book.volumeInfo.publisher}
+              image={book.volumeInfo.imageLinks.thumbnail}
+              info={book.volumeInfo.infoLink}
+            />
+          ))}
       </div>
     </div>
   );
