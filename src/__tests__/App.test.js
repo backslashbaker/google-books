@@ -6,14 +6,6 @@ it("renders without crashing", () => {
   shallow(<App />);
 });
 
-// it("when search button is clicked", () => {
-//   const wrapper = shallow(<App />);
-
-//   const button = wrapper.find(".search-button");
-//   button.simulate("click");
-//   console.log(wrapper.props());
-// });
-
 describe("api call", () => {
   const data = {
     items: {
