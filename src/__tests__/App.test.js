@@ -21,18 +21,19 @@ describe("api call", () => {
       authors: "toni"
     }
   };
-  const query = "Harry Potter";
+  const query = "Children of Blood and Bone";
 
   const originalFetch = global.fetch();
   const API_KEY = process.env.REACT_APP_API_KEY;
 
   it("makes call to google books api", async () => {
     const mockFetch = jest.fn(() => {
-      return {
+      return Promise.resolve({
         json: () => {
           return data;
-        }
-      };
+        },
+        catch: jest.fn()
+      });
     });
     global.fetch = mockFetch;
 

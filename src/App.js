@@ -11,7 +11,8 @@ export const getBooks = async query => {
     console.log(error);
     return;
   });
-  const data = await response.json();
+
+  const data = response.json();
   return data;
 };
 
