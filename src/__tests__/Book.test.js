@@ -8,7 +8,7 @@ const data = {
   publisher: "Drizzle"
 };
 
-it("renders without crashing", () => {
+it("renders book component", () => {
   const wrapper = shallow(<Book />);
   expect(wrapper).toHaveLength(1);
 });
