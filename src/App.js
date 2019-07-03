@@ -35,7 +35,13 @@ const App = () => {
 
   const getSearch = e => {
     e.preventDefault();
-    setQuery(search);
+    if (search === "") {
+      alert(
+        "Whoops! Looks like you haven't entered a valid search. Let's try that again"
+      );
+    } else {
+      setQuery(search);
+    }
     setSearch("");
   };
 
